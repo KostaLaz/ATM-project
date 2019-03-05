@@ -17,13 +17,14 @@ public class OptionMenu extends Account {
 
 	// Validate login information, customer number and pin number
 
-	public void getLogin() {
+	public void getLogin() throws IOException{
 		int x = 1;
 
 		do {
 			try {
 				data.put(0000, 0000);
 				data.put(1111, 1111);
+				data.put(2222, 2222);
 
 				System.out.println("Welcome to the ATM project");
 				
@@ -32,12 +33,13 @@ public class OptionMenu extends Account {
 
 				System.out.println("Enter your pin number");
 				setPinNumber(menuInput.nextInt());
-			} catch (Exception IOException) {
+			} catch (Exception e) {
 				System.out.println("\n" + "Invalid character/s, numbers only" + "\n");
 				x = 2;
 
 				for (Entry<Integer, Integer> entry : data.entrySet()) {
 					if (entry.getKey() == getCustomerNumber() && entry.getValue() == getPinNumber()) {
+						
 						getAccountType();
 					}
 				}
